@@ -1,0 +1,845 @@
+@font-face
+  font-family: "alex"
+  src: url(font/AlexBrush-Regular.ttf)
+
+@font-face
+  font-family: "adobe ming"
+  src: url(font/AdobeMingStd-Light.otf)
+
+@font-face
+  font-family: "devanagari"
+  src: url(font/AdobeDevanagari-Regular.otf)
+
+$rosso : #964b44
+$arancio : #c86157
+
+body
+  overflow-x: hidden
+
+*
+  padding: 0
+  margin: 0
+
+.inglese
+  cursor: pointer
+.italiano
+  cursor: pointer
+
+.riconoscimenti
+  top: 0
+  right: 0
+  position: absolute
+  z-index: 20
+  background: rgba(0,0,0,0.3)
+  color: white
+  width: 580px
+  height: 250px
+  display: flex
+  font-family: "open sans"
+  align-items: center
+  justify-content: space-around
+  padding-left: 20px
+  padding-right: 20px
+  line-height: 2
+  img
+    width: 150px
+    height: 150px
+
+.contenitore
+  height: auto
+  width: 100vw
+  overflow-x: hidden
+
+.tornaSu
+  width: 60px
+  height: 60px
+  position: fixed
+  right: 20px
+  bottom: 20px
+  z-index: 10000
+  display: none
+  cursor: pointer
+
+.contenitore-header
+  overflow: hidden
+  position: relative
+
+.header
+  height: 100vh
+  width: 100vw
+  position: relative
+  overflow: hidden
+  .foto-1
+    width: inherit
+    height: inherit
+    background: url(foto/dietro-min.jpg)
+    background-attachment: fixed
+    position: absolute
+    // animation: foto1 20s ease-in-out alternate infinite
+  .foto-2
+    width: inherit
+    height: inherit
+    background: url(foto/letto-new-min.jpg)
+    background-attachment: fixed
+    position: absolute
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 100% 35%, 0% 65%, 0% 100%)
+    // animation: foto2 25s linear alternate infinite
+  .foto-3
+    width: inherit
+    height: inherit
+    position: absolute
+    background-attachment: fixed
+    background: rgba(207, 160, 156, 0.69)
+  .foto-4
+    width: inherit
+    height: inherit
+    position: absolute
+    background-attachment: fixed
+    background: $rosso
+    clip-path: polygon(0% 55%, 100% 10%, 100% 100%, 100% 45%, 0% 90%, 0% 100%)
+  .logo-header
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%) rotate(-13deg)
+    width: 25vw
+    max-width: 480px
+    animation: logoHeader 3s ease-in-out alternate infinite
+    cursor: pointer
+
+@keyframes foto1
+  0%
+    transform: scale(1)
+    background-position: top
+  50%
+    transform: scale(1.1)
+    background-position: center
+  100%
+    transform: scale(1.2)
+    background-position: bottom
+
+@keyframes foto2
+  0%
+    transform: scale(1)
+    background-position: bottom
+  50%
+    transform: scale(1.1)
+    background-position: center
+  100%
+    transform: scale(1.2)
+    background-position: top
+
+@keyframes logoHeader
+  0%
+    transform: translate(-50%, -50%) rotate(-13deg)
+  50%
+    transform: translate(-50%, -50%) rotate(-18deg)
+  100%
+    transform: translate(-50%, -50%) scale(-10deg)
+
+
+.storia-palazzo
+  padding-top: 65px
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7)
+  background: url(foto/base-2.png), #E8E8E8
+  h1
+    color: #95989A
+    text-align: center
+    font-size: 45px
+    font-family: "adobe ming"
+  .contenitore-storia
+    height: 700px
+    display: flex
+    align-items: center
+    justify-content: center
+    .logo-comparsa
+      width: 22vw
+      height: 22vw
+      box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0)
+      border-radius: 50%
+      animation: comparsa 2s ease-in-out forwards
+      animation-play-state: paused
+    .corda
+      margin-left: 130px
+      height: 2px
+      width: 0px
+      overflow: visible
+      position: relative
+      background: #95989A
+      animation: comparsaCorda 2s ease-in-out forwards
+      animation-play-state: paused
+      .contenitore-punti
+        position: relative
+        display: flex
+        justify-content: space-between
+        width: 50vw
+        height: inherit
+        top: -9px
+        .punto
+          opacity: 0
+          cursor: pointer
+          background: #787878
+          width: 20px
+          height: 20px
+          border-radius: 50%
+          position: relative
+          font-weight: bolder
+          font-family: cursive
+          animation: comparsaPunti 2s ease-in-out forwards
+          animation-play-state: paused
+          &:nth-child(odd)
+            p:nth-child(1)
+              cursor: pointer
+              color: #787878
+              position: absolute
+              top: 35px
+              left: 50%
+              transform: translateX(-50%)
+            p:nth-child(2)
+              padding: 25px 55px
+              text-align: justify
+              width: 550px
+              position: absolute
+              top: 100px
+              color: #787878
+              background: white
+              font-weight: normal
+              font-family: sans-serif
+          &:nth-child(even)
+            p:nth-child(1)
+              cursor: pointer
+              color: #787878
+              position: absolute
+              top: -35px
+              left: 50%
+              transform: translateX(-50%)
+            p:nth-child(2)
+              padding: 25px 55px
+              text-align: justify
+              width: 550px
+              position: absolute
+              top: -220px
+              color: #787878
+              background: white
+              font-weight: normal
+              font-family: sans-serif
+          &:nth-child(1)
+            &:hover p:nth-child(2)
+              opacity: 1
+              transform: rotate(0deg) translateY(0px)
+            p:nth-child(2)
+              transform: rotate(-20deg) translateY(50px)
+              transform-origin: 30%
+              opacity: 0
+              transition: 300ms ease
+              left: -45px
+              pointer-events: none
+              &::before
+                content: ''
+                position: absolute
+                top: -40px
+                left: 35px
+                border: 20px solid grey
+                border-color: transparent transparent white transparent
+          &:nth-child(2)
+            &:hover p:nth-child(2)
+              opacity: 1
+              transform: rotate(0deg) translateY(0px)
+            p:nth-child(2)
+              pointer-events: none
+              transition: 300ms ease
+              transform: rotate(-20deg) translateY(50px)
+              transform-origin: 30%
+              opacity: 0
+              left: -145px
+              &::before
+                content: ''
+                position: absolute
+                bottom: -40px
+                left: 135px
+                border: 20px solid grey
+                border-color: white transparent transparent transparent
+          &:nth-child(3)
+            &:hover p:nth-child(2)
+              opacity: 1
+              transform: rotate(0deg) translateY(0px)
+            p:nth-child(2)
+              pointer-events: none
+              transition: 300ms ease
+              transform: rotate(-20deg) translateY(50px)
+              transform-origin: 30%
+              opacity: 0
+              left: -245px
+              &::before
+                content: ''
+                position: absolute
+                top: -40px
+                left: 235px
+                border: 20px solid grey
+                border-color: transparent transparent white transparent
+          &:nth-child(4)
+            &:hover p:nth-child(2)
+              opacity: 1
+              transform: rotate(0deg) translateY(0px)
+            p:nth-child(2)
+              pointer-events: none
+              transition: 300ms ease
+              transform: rotate(-20deg) translateY(50px)
+              transform-origin: 30%
+              opacity: 0
+              right: -250px
+              &::before
+                content: ''
+                position: absolute
+                bottom: -40px
+                right: 240px
+                border: 20px solid grey
+                border-color: white transparent transparent transparent
+          &:nth-child(5)
+            &:hover p:nth-child(2)
+              opacity: 1
+              transform: rotate(0deg) translateY(0px)
+            p:nth-child(2)
+              pointer-events: none
+              transition: 300ms ease
+              transform: rotate(-20deg) translateY(50px)
+              transform-origin: 30%
+              opacity: 0
+              right: -235px
+              text-align: center
+              &::before
+                content: ''
+                position: absolute
+                top: -40px
+                right: 225px
+                border: 20px solid grey
+                border-color: transparent transparent white transparent
+          &:nth-child(6)
+            &:hover p:nth-child(2)
+              opacity: 1
+              transform: rotate(0deg) translateY(0px)
+            p:nth-child(2)
+              pointer-events: none
+              transition: 300ms ease
+              transform: rotate(-20deg) translateY(50px)
+              transform-origin: 30%
+              opacity: 0
+              right: -115px
+              &::before
+                content: ''
+                position: absolute
+                bottom: -40px
+                right: 105px
+                border: 20px solid grey
+                border-color: white transparent transparent transparent
+          &:nth-child(7)
+            &:hover p:nth-child(2)
+              opacity: 1
+              transform: rotate(0deg) translateY(0px)
+            p:nth-child(2)
+              pointer-events: none
+              transition: 300ms ease
+              transform: rotate(-20deg) translateY(50px)
+              transform-origin: 30%
+              opacity: 0
+              right: -45px
+              text-align: center
+              &::before
+                content: ''
+                position: absolute
+                top: -40px
+                right: 35px
+                border: 20px solid grey
+                border-color: transparent transparent white transparent
+
+@keyframes comparsa
+  0%
+    stroke-dashoffset: 6284px
+    fill: transparent
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0)
+  50%
+    stroke-dashoffset: 3142px
+  100%
+    stroke-dashoffset: 0px
+    fill:#c86157
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.7)
+
+@keyframes comparsaCorda
+  0%
+    width: 0vw
+  100%
+    width: 50vw
+
+@keyframes comparsaPunti
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+.palazzo-animazione
+  animation: comparsaPalazzo 2s ease-in-out forwards
+  animation-play-state: paused
+
+@keyframes comparsaPalazzo
+  0%
+    stroke-dashoffset: 6284px
+    fill: transparent
+  50%
+    stroke-dashoffset: 3142px
+  100%
+    stroke-dashoffset: 0px
+    fill:#FFF
+
+
+.selezionato
+  display: block
+
+.sale
+  padding-top: 65px
+  position: relative
+  perspective: 1000px
+  h1
+    color: #95989A
+    text-align: center
+    font-size: 45px
+    font-family: "adobe ming"
+  .contenitore-mappa
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 85vh
+    transform-origin: top
+    transform: rotateX(-45deg)
+    animation: rotazioneMappa 4s ease-in-out forwards
+    animation-play-state: paused
+    .mappa
+      width: 65vw
+      height: 33vw
+    .lista-stanze
+      position: relative
+      height: 65vh
+      margin-left: 50px
+      padding-left: 50px
+      border-left: 2px solid black
+      &::before
+        content: "Stanze disponibili"
+        position: absolute
+        font-family: "adobe ming"
+        top: -65px
+        font-weight: bolder
+        font-size: 25px
+        left: -8px
+        color: #c86157
+      ol
+        font-family: sans-serif
+        height: 100%
+        display: flex
+        flex-direction: column
+        justify-content: space-around
+        color: grey
+        font-weight: bolder
+        cursor: pointer
+  .oscura
+    position: absolute
+    top: 0
+    left: 0
+    width: 100vw
+    height: 100vh
+    background: rgba(0, 0, 0, 0.5)
+    display: none
+  .sale-stanza
+    position: absolute
+    top: 0
+    left: 0
+    width: 50vw
+    height: 100vh
+    transform: translateX(-50vw)
+    background: rgba(169, 59, 59, 0.95)
+    transition: transform 250ms ease
+    > div
+      position: absolute
+      top: 0
+      left: 0
+      width: 50vw
+      height: 100vh
+      transform: translateX(-50vw)
+      background: rgba(169, 59, 59, 0.95)
+      transition: transform 350ms ease
+      overflow-y: scroll
+      img
+        position: relative
+        left: 50%
+        transform: translateX(-50%)
+      h1
+        color: white
+        margin-top: 65px
+        margin-bottom: 55px
+        margin-left: auto
+        margin-right: auto
+        width: 725px
+      p
+        width: 730px
+        text-align: justify
+        margin: auto
+        margin-top: 50px
+        margin-bottom: 200px
+        color: #e8e8e8
+        font-size: 18px
+        font-family: "open sans"
+      .chiusura
+        position: absolute
+        width: 35px
+        right: 30px
+        left: auto
+        top: 30px
+        transform: scale(1)
+        transition: transform 250ms ease
+        cursor: pointer
+        &:hover
+          transform: scale(1.3)
+
+.nessun-opera
+  display: none
+  position: absolute
+  width: 500px
+  height: 300px
+  background: $arancio
+  top: 50%
+  left: 50%
+  transform: translate(-50%,-50%)
+  // display: flex
+  justify-content: center
+  align-items: center
+  h1
+    color: white
+    width: 320px
+
+
+.particolare-h1
+  font-size: 35px !important
+.foto-galleria
+  display: flex
+  height: 550px
+  justify-content: space-around
+  img
+    left: auto !important
+    width: 325px
+    transform: none !important
+
+@keyframes rotazioneMappa
+  0%
+    transform: rotateX(-45deg)
+  20%
+    transform: rotateX(20deg)
+  40%
+    transform: rotateX(-20deg)
+  60%
+    transform: rotateX(10deg)
+  80%
+    transform: rotateX(-5deg)
+  100%
+    transform: rotateX(0deg)
+
+.scopri
+  transform: translateX(50vw)!important
+  transition: transform 350ms ease!important
+
+#disponibili
+  color: #c86157
+
+.immagini
+  // height: 75vh
+  height: 700px
+  min-height: 700px
+  width: 100vw
+  background: #ececec
+  display: flex
+  align-items: center
+  position: relative
+  // padding-top: 65px
+  .retro
+    box-shadow: none
+    width: 50px
+    top: 10px
+    transform: translateX(-50%)
+    cursor: pointer
+    display: none
+    z-index: 10
+  h1
+    font-size: 45px
+    font-family: "adobe ming"
+    text-align: center
+    color: #95989A
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+    top: 0
+  .contenitore-foto
+    display: flex
+    justify-content: space-around
+    position: absolute
+    width: 100vw
+    height: 380px
+    .foto-contorno
+      width: 400px
+      position: relative
+      box-shadow: 0px 0px 20px -5px black
+      height: inherit
+      background: white
+      h2
+        position: absolute
+        bottom: 20px
+        left: 50%
+        transform: translateX(-50%)
+        font-family: "open sans"
+        letter-spacing: 10px
+  img
+    position: absolute
+    width: 370px
+    // height: 30px
+    left: 50%
+    top: 50%
+    // transform: translate(-50%, -50%) rotate(5deg)
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.80)
+    // animation-play-state: paused
+    cursor: pointer
+  .fotografie
+    display: none
+    position: absolute
+    top: 0
+    left: 0
+    width: 100vw
+    // width: 900px
+    height: auto
+    min-height: 75vh
+    padding: 100px
+    box-sizing: border-box
+    padding-top: 85px
+    transition: all 300ms ease
+    div
+      position: static
+      transition: 250ms ease
+      box-shadow: 0px 0px 10px 0px black
+      width: 150px
+      height: 150px
+      // border-radius: 50%
+      display: inline-block
+      margin: 30px
+      cursor: pointer
+      &:hover
+        transform: scale(1.2)
+
+  .mostra-foto
+    display: none
+    position: fixed
+    top: 0
+    left: 0
+    width: 100vw
+    height: 100vh
+    background: rgba(0, 0, 0, 0.70)
+    z-index: 100
+    perspective: 1200px
+    img
+      width: auto
+      height: auto
+      max-width: 800px
+      max-height: 800px
+      transform: translate(-50%,-50%) rotateY(0deg)
+      animation: rotazioneFoto 2s ease-in-out forwards
+      animation-play-state: paused
+      animation-delay: 1s
+    .specifiche
+      display: none
+      align-items: center
+      justify-content: center
+      position: absolute
+      background: white
+      width: 800px
+      height: 600px
+      left: 50% !important
+      top: 50% !important
+      transform: translate(-50%, -50%)
+      top: 0
+      left: 0
+      animation: rotazioneFoto2 2s ease-in-out forwards
+      animation-play-state: paused
+      animation-delay: 1s
+      z-index: 0
+      flex-direction: column
+      h2
+        font-family: "open sans"
+        margin-bottom: 20px
+      ul
+        font-family: "open sans"
+        list-style: none
+        li
+          text-align: center
+
+
+@keyframes rotazioneFoto
+  0%
+    transform: translate(-50%,-50%) rotateY(0deg)
+  100%
+    transform: translate(-50%,-50%) rotateY(180deg)
+
+@keyframes rotazioneFoto2
+  0%
+    transform: translate(-50%,-50%) rotateY(-180deg)
+    z-index: 0
+  100%
+    transform: translate(-50%,-50%) rotateY(0deg)
+    z-index: 1
+
+
+@keyframes primaF
+  0%
+    transform: translate(-50%, -50%) rotate(-500deg)
+  100%
+    transform: translate(-50%, -50%) rotate(5deg)
+
+@keyframes secondaF
+  0%
+    transform: translate(-50%, -50%) rotate(300deg)
+  100%
+    transform: translate(-50%, -50%) rotate(-3deg)
+
+.contattaci
+  width: 100vw
+  height: 650px
+  background: $arancio
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: space-around
+  padding-right: 55px
+  box-sizing: border-box
+  .mappa-2
+    width: 50%
+    height: 80%
+    box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.75)
+  .contattaci-dati
+    line-height: 2.5
+    width: 25%
+    height: 100%
+    color: white
+    font-family: 'Open Sans'
+    display: flex
+    flex-direction: column
+    justify-content: center
+    h1
+      font-size: 45px
+    .contenitore-dati
+      div
+        display: flex
+        align-items: center
+        margin: 20px
+        &:last-child
+          flex-direction: column
+          align-items: baseline
+        img
+          width: 30px
+          height: 30px
+          margin: 0 20px
+        p
+          font-size: 20px
+
+.footer
+  width: 100vw
+  height: 15vh
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding: 0 50px
+  box-sizing: border-box
+  background-color: #F2F2F2
+  .logo-footer
+    display: flex
+    align-items: center
+    img
+      width: 55px
+      height: 55px
+    .scritta-footer
+      margin-left: 25px
+      h1
+        font-family: sans-serif
+        font-weight: normal
+        text-transform: uppercase
+      p
+        font-family: sans-serif
+        text-transform: uppercase
+        font-size: 10px
+        margin-top: 5px
+        color: grey
+  .crediti
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+    font-size: 22px
+    font-family: sans-serif
+    text-transform: uppercase
+    color: grey
+
+  .social
+    display: flex
+    img
+      width: 55px
+      height: 55px
+      margin: 0 12px
+
+@media (max-width: 1910px) and (min-width: 1400px)
+  .sale .sale-stanza > div
+    width: 65vw !important
+
+
+@media (max-width: 1200px)
+
+  .sale h1
+    font-size: 35px !important
+    width: 500px !important
+
+  .sale .sale-stanza>div p
+    font-size: 13px !important
+    width: 500px !important
+
+  .sale-stanza > div
+    width: 80vw !important
+
+  .logo-footer
+    img
+      width: 45px !important
+      height: 45px !important
+
+  .scritta-footer
+    h1
+      font-size: 18px !important
+    p
+      font-size: 8px !important
+
+  .crediti
+    font-size: 15px !important
+
+  .social
+    img
+      height: 45px !important
+      width: 45px !important
+
+  .contenitore-punti
+    top: -7px !important
+    .punto
+      width: 15px !important
+      height: 15px !important
+      p:nth-child(2)
+        font-size: 14px !important
+        width: 450px !important
+
+  .contattaci-dati
+    width: 30% !important
+    h1
+      font-size: 35px !important
+    .contenitore-dati
+      div
+        img
+          height: 22px !important
+          width: 22px !important
+        p
+          font-size: 15px !important
