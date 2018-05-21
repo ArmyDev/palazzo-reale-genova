@@ -1245,6 +1245,19 @@ body {
   }
 }
 
+.guide {
+  height: 500px;
+  width: 100vw;
+  background: #964b44;
+  display: flex;
+  justify-content: space-around;
+}
+
+.contenitore-doc-guide {
+  height: ;
+  width: ;
+}
+
 .contattaci {
   width: 100vw;
   height: 650px;
