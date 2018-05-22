@@ -20,14 +20,20 @@ $(document).ready( function() {
         // randomico = Math.random() * 1000;
         $(".fotografie").append("<div style='background-image:url(foto/leggere/opere/" + i + ".jpg);background-size: cover;' ></div>")
       }
-    } else {
+    } else if (this.title == "autori") {
       scelta = "autori";
 
       // $(".fotografie").css("width", "900px");
       $(".contenitore-foto").css("opacity", 0);
       for (var i = 1; i <= 21; i++) {
         $(".fotografie").append("<div class='"+ i +"' style='background-image:url(foto/leggere/autori/" + i + ".jpg);background-size: cover;' ></div>")
-      }
+      } 
+    } else {
+        scelta = "guide";
+
+        $(".contenitore-foto").css("opacity", 0);
+        for (var i = 0; i <= 6; i++) 
+          $(".fotografie").append("<div class='"+ i +"' style='background-image:url(foto/guide/" + i + ".jpg);background-size: cover;' ></div>");
     }
     var altezza = $(".fotografie").height();
     $(".fotografie").css("background", "#ececec");
@@ -41,7 +47,7 @@ $(document).ready( function() {
     });
     $(".immagini").css({ "height" :altezza+150+"px", "background": "#ececec"});
     $(".fotografie div").on("click", function () {
-      if (scelta == "opere") {
+      if (scelta == "opere" || scelta == "guide") {
         var bg = $(this).css('background-image');
         bg = bg.replace('url(','').replace(')','').replace(/\"/gi, "");
         // alert(bg);
@@ -154,7 +160,7 @@ $(document).ready( function() {
 
   // Per mettere l'anno corrente nei crediti
   var data = new Date().getFullYear();
-  $(".crediti").html("Copyright © " + data + " <span style='font-size:12px'>v0.8.9</span>");
+  $(".crediti").html("Copyright © " + data + " <span style='font-size:12px'>v0.9.4</span>");
 
   // Per gestire i click dell'utente
   $(".logo-header").click(function(){

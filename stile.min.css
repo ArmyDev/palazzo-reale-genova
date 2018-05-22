@@ -945,17 +945,18 @@ body {
 }
 
 .immagini {
-  height: 700px;
-  min-height: 700px;
-  width: 100vw;
-  background: #ececec;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: relative
+    height: 700px;
+    min-height: 700px;
+    width: 100vw;
+    background: #ececec;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .immagini .retro {
@@ -1245,18 +1246,49 @@ body {
   }
 }
 
+@keyframes terzaF {
+  0% {
+    transform: translate(-50%, -47%)
+  } 100% {
+    transform: translate(-50%, -54%)
+  }
+}
+
 .guide {
-  height: 500px;
-  width: 100vw;
-  background: #964b44;
-  display: flex;
-  justify-content: space-around;
+    height: 401px;
+    width: 100vw;
+    background: #964b44;
+    padding: 20px 0;
+    display: flex;
 }
 
 .contenitore-doc-guide {
-  height: ;
-  width: ;
+    margin: 0 auto;
+    width: 1125px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
 }
+.link-guide {
+    text-decoration: none;
+    color: black;
+    background: gold;
+    padding-top: 10px;
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 10px;
+    width: 200px;
+    font-family: adobe ming;
+    margin-top: 16px;
+    margin-right: 61px;
+    /* [disabled]margin-left: 16px; */
+    margin-bottom: 16px;
+    text-align: center;
+
+}
+
 
 .contattaci {
   width: 100vw;
@@ -1407,6 +1439,20 @@ body {
   height: 55px;
   margin: 0 12px
 }
+.titolo {
+    font-family: "adobe ming";
+    font-size: 40px;
+    text-align: right;
+    color: white;
+    margin-bottom: 30px;
+}
+#volantino {
+    width: 620px;
+    position: absolute;
+    left: 0;
+}
+
+
 
 @media screen and (-webkit-device-pixel-ratio: 1.0) {
   .sale-stanza>div {
