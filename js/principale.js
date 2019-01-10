@@ -1,43 +1,47 @@
-$(document).ready( function() {
+$(document).ready( () => {
 
   inView.offset({ bottom:200 });
 
-  $(".inglese").on("click", function(){
-    window.location.assign(document.location+"eng/index.html");
+  $(".inglese").on("click", () => {
+    window.location.assign(document.location + "eng/index.html");
   });
 
-  var foto = $(".fotografie").css("height");
-  var randomico;
-  var scelta = "nessuna";
-  $(".foto-contorno img").on("click", function () {
+  let foto = $(".fotografie").css("height");
+  let randomico;
+  let scelta = "nessuna";
+
+  $(".foto-contorno img").on("click", () => {
     $(".fotografie").fadeIn("fast");
+
     if (this.title == "opere") {
       scelta = "opere";
+
       $(".fotografie").css("width", "100vw");
-      $(".mostra-foto img").css({"width": "auto", "height": "auto"});
+      $(".mostra-foto img").css( {"width": "auto", "height": "auto"} );
       $(".contenitore-foto").css("opacity", 0);
-      for (var i = 1; i < 54; i++) {
-        // randomico = Math.random() * 1000;
+      for (let i = 1; i < 54; i++) {
         $(".fotografie").append("<div style='background-image:url(foto/leggere/opere/" + i + ".jpg);background-size: cover;' ></div>")
       }
     } else if (this.title == "autori") {
       scelta = "autori";
 
-      // $(".fotografie").css("width", "900px");
       $(".contenitore-foto").css("opacity", 0);
-      for (var i = 1; i <= 21; i++) {
+      for (let i = 1; i <= 21; i++) {
         $(".fotografie").append("<div class='"+ i +"' style='background-image:url(foto/leggere/autori/" + i + ".jpg);background-size: cover;' ></div>")
-      } 
+      }
     } else {
         scelta = "guide";
 
         $(".contenitore-foto").css("opacity", 0);
-        for (var i = 0; i <= 6; i++) 
+        for (let i = 0; i <= 6; i++)
           $(".fotografie").append("<div class='"+ i +"' style='background-image:url(foto/guide/" + i + ".jpg);background-size: cover;' ></div>");
     }
-    var altezza = $(".fotografie").height();
+
+    let altezza = $(".fotografie").height();
+
     $(".fotografie").css("background", "#ececec");
-    $(".retro").fadeIn().on("click", function () {
+
+    $(".retro").fadeIn().on("click", () => {
       $(".contenitore-foto").css("opacity", 1);
       $(".fotografie").fadeOut();
       $(".fotografie").css("background", "transparent");
@@ -45,24 +49,26 @@ $(document).ready( function() {
       $(".fotografie div").remove();
       $(this).fadeOut();
     });
+
     $(".immagini").css({ "height" :altezza+150+"px", "background": "#ececec"});
-    $(".fotografie div").on("click", function () {
+
+    $(".fotografie div").on("click", () => {
       if (scelta == "opere" || scelta == "guide") {
-        var bg = $(this).css('background-image');
+        let bg = $(this).css('background-image');
         bg = bg.replace('url(','').replace(')','').replace(/\"/gi, "");
-        // alert(bg);
 
         $(".mostra-foto").fadeIn().append(`<img id="opera" src="${bg}">`);
         $("body").css("overflow-y", "hidden");
         document.addEventListener('wheel', scorri);
       } else if (scelta == "autori") {
-        var bg = $(this).css('background-image');
+        let bg = $(this).css('background-image');
         bg = bg.replace('url(','').replace(')','').replace(/\"/gi, "");
         $(".mostra-foto").fadeIn().append(`<img id="persona" src="${bg}">`);
         $(".mostra-foto img").css({"animation-play-state": "running", "width": "800px", "height": "600px"});
         $(".mostra-foto .specifiche").css({"animation-play-state": "running", "display": "flex"});
         $("body").css("overflow-y", "hidden");
-        var classe = $(this).attr("class");
+        let classe = $(this).attr("class");
+
         switch (classe) {
           case "1":
             $(".specifiche").html("<h1 style='top:100px'>Chiara Panina</h1> <h2>Lavoro svolto:</h2> <ul> <li>Il trionfo di Bacco <li> Taoletta di Venere <li> Apollo e Marsia<ul>");
@@ -133,7 +139,7 @@ $(document).ready( function() {
       }
     });
 
-    $(".mostra-foto").on("click", function () {
+    $(".mostra-foto").on("click", () => {
       $(this).fadeOut();
       $(".specifiche").fadeOut();
       document.removeEventListener("wheel", scorri);
@@ -141,10 +147,10 @@ $(document).ready( function() {
       $(".mostra-foto img").remove();
       $("body").css("overflow-y", "visible");
     });
-
   });
 
-  var ingrandimento = 1;
+  let ingrandimento = 1;
+
   function scorri(event) {
     if (event.deltaY < 0) {
       ingrandimento += 0.1;
@@ -159,21 +165,21 @@ $(document).ready( function() {
   $(".author").attr("src", `foto/autori/${randomico}.jpg`);
 
   // Per mettere l'anno corrente nei crediti
-  var data = new Date().getFullYear();
+  let data = new Date().getFullYear();
   $(".crediti").html("Copyright © " + data + " <span style='font-size:12px'>v0.9.4</span>");
 
   // Per gestire i click dell'utente
-  $(".logo-header").click(function(){
+  $(".logo-header").click(() => {
     $("html, body").animate({ scrollTop: "974px" }, 1000);
   });
 
-  $(".tornaSu").click(function(){
+  $(".tornaSu").click(() => {
     $("html, body").animate({ scrollTop: "0px" }, 1500);
   });
 
   // Per animare la sezione della storia del palazzo
   $(".logo-comparsa").css("stroke-dasharray", 2 * 1000 * Math.PI);
-  inView(".logo-comparsa").once("enter", function(){
+  inView(".logo-comparsa").once("enter", () => {
     $(".logo-comparsa").css("animation-play-state", "running");
     $(".palazzo-animazione").css("animation-play-state", "running");
     $(".corda").css("animation-play-state", "running");
@@ -181,11 +187,11 @@ $(document).ready( function() {
   });
 
   // Per animare il dondolio della mappa
-  inView(".contenitore-mappa").once("enter", function(){
+  inView(".contenitore-mappa").once("enter", () => {
     $(".contenitore-mappa").css("animation-play-state", "running");
   });
 
-  inView(".foto-contorno img").once("enter", function () {
+  inView(".foto-contorno img").once("enter", () => {
     $(".foto-contorno img").css("animation-play-state", "running");
   });
 
@@ -196,9 +202,10 @@ $(document).ready( function() {
   scorrimento();
 
 
-  var hSale = $(".sale").offset().top;
+  let hSale = $(".sale").offset().top;
+
   // Effetti della mappa quando ci sono dei click
-  $("area").on("click", function(){
+  $("area").on("click", () => {
     if ($("div").hasClass(`${this.title}`)) {
       $(".oscura").fadeIn();
       $(`.${this.title}`).addClass("scopri");
@@ -212,7 +219,8 @@ $(document).ready( function() {
       $(".nessun-opera").fadeIn().css("display", "flex");
     }
   });
-  $(".chiusura, .oscura").on("click", function(){
+
+  $(".chiusura, .oscura").on("click", () => {
     $(".oscura").fadeOut();
     $(".scopri").scrollTop("0px");
     $(".scopri").removeClass("scopri");
@@ -220,8 +228,9 @@ $(document).ready( function() {
     $(".nessun-opera").fadeOut();
   });
 
-  $(".lista-stanze ol li").on("click", function () {
-    var stanza = $(this).html().replace(/ |'/gi, "-");
+  $(".lista-stanze ol li").on("click", () => {
+    let stanza = $(this).html().replace(/ |'/gi, "-");
+
     if ($("div").hasClass(`${stanza}`)) {
       $(".oscura").fadeIn();
       $(`.${stanza}`).addClass("scopri");
@@ -238,10 +247,10 @@ $(document).ready( function() {
 
   // Per attivare la funzione quando si scrolla
   $(window).on("scroll", scorrimento);
+
   function scorrimento() {
+    let percorso = $(window).scrollTop();
 
-
-    var percorso = $(window).scrollTop();
     if (percorso < 500) {
       $(".foto-2, .foto-3, .foto-4").css("top", percorso/2);
       $(".foto-1").css("top", percorso);
@@ -256,17 +265,17 @@ $(document).ready( function() {
 
   }
 
-
-
 });
 
 // Parte del canvas e delle stelle, DA TENERE FUORI DALLA FUNZIONE READY();
-var stelle = new Array(500);
+let stelle = new Array(500);
+
 function setup() {
-  var altezza = windowHeight/4;
-  var canvas = createCanvas(windowWidth, altezza*3);
+  let altezza = windowHeight/4;
+  let canvas = createCanvas(windowWidth, altezza*3);
   canvas.parent("effetto");
-  for (var i = 0; i < stelle.length; i++) {
+
+  for (let i = 0; i < stelle.length; i++) {
     stelle[i] = new Stella();
   }
 }
@@ -274,7 +283,8 @@ function setup() {
 function draw() {
   background(232);
   translate(width/2, height/2);
-  for (var i = 0; i < stelle.length; i++) {
+
+  for (let i = 0; i < stelle.length; i++) {
     stelle[i].muovi();
     stelle[i].mostra();
   }
@@ -285,14 +295,16 @@ function Stella() {
   this.y = random(-windowHeight, windowHeight/2);
   this.z = random(width);
   this.grandezza = 5;
-  this.mostra = function () {
+
+  this.mostra = () => {
     this.sX = map(this.x / this.z, 0, 1, 0, width);
     this.sY = map(this.y / this.z, 0, 1, 0, height);
     this.raggio = map(this.z, 0, width, 8, 0);
     noStroke();
     ellipse(this.sX, this.sY, this.raggio, this.raggio);
   }
-  this.muovi = function () {
+
+  this.muovi = () => {
     if (this.z > 1) {
       this.z -= 1;
     } else {
