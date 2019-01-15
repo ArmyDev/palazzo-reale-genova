@@ -1,15 +1,15 @@
-$(document).ready( function() {
+$(document).ready( () => {
 
   inView.offset({ bottom:200 });
 
-  $(".italiano").on("click", function(){
+  $(".italiano").on("click", () => {
     var loca = document.location.toString().replace("eng/index.html","");
     window.location.assign(loca);
   });
 
-  var foto = $(".fotografie").css("height");
-  var randomico;
-  var scelta = "nessuna";
+  let foto = $(".fotografie").css("height");
+  let randomico;
+  let scelta = "nessuna";
   $(".foto-contorno img").on("click", function () {
     $(".fotografie").fadeIn("fast");
     if (this.title == "opere") {
@@ -17,7 +17,7 @@ $(document).ready( function() {
       $(".fotografie").css("width", "100vw");
       $(".mostra-foto img").css({"width": "auto", "height": "auto"});
       $(".contenitore-foto").css("opacity", 0);
-      for (var i = 1; i < 54; i++) {
+      for (let i = 1; i < 54; i++) {
         // randomico = Math.random() * 1000;
         $(".fotografie").append("<div style='background-image:url(foto/leggere/opere/" + i + ".jpg);background-size: cover;' ></div>")
       }
@@ -26,17 +26,17 @@ $(document).ready( function() {
 
       // $(".fotografie").css("width", "900px");
       $(".contenitore-foto").css("opacity", 0);
-      for (var i = 1; i <= 21; i++) {
+      for (let i = 1; i <= 21; i++) {
         $(".fotografie").append("<div class='"+ i +"' style='background-image:url(foto/leggere/autori/" + i + ".jpg);background-size: cover;' ></div>")
       }
     } else {
       scelta = "guide";
 
       $(".contenitore-foto").css("opacity", 0);
-      for (var i = 0; i <= 6; i++) 
+      for (let i = 0; i <= 6; i++)
         $(".fotografie").append("<div class='"+ i +"' style='background-image:url(foto/guide/" + i + ".jpg);background-size: cover;' ></div>");
     }
-    var altezza = $(".fotografie").height();
+    let altezza = $(".fotografie").height();
     $(".fotografie").css("background", "#ececec");
     $(".retro").fadeIn().on("click", function () {
       $(".contenitore-foto").css("opacity", 1);
@@ -49,7 +49,7 @@ $(document).ready( function() {
     $(".immagini").css({ "height" :altezza+150+"px", "background": "#ececec"});
     $(".fotografie div").on("click", function () {
       if (scelta == "opere" || scelta == "guide") {
-        var bg = $(this).css('background-image');
+        let bg = $(this).css('background-image');
         bg = bg.replace('url(','').replace(')','').replace(/\"/gi, "");
         // alert(bg);
 
@@ -57,13 +57,13 @@ $(document).ready( function() {
         $("body").css("overflow-y", "hidden");
         document.addEventListener('wheel', scorri);
       } else if (scelta == "autori") {
-        var bg = $(this).css('background-image');
+        let bg = $(this).css('background-image');
         bg = bg.replace('url(','').replace(')','').replace(/\"/gi, "");
         $(".mostra-foto").fadeIn().append(`<img id="persona" src="${bg}">`);
         $(".mostra-foto img").css({"animation-play-state": "running", "width": "800px", "height": "600px"});
         $(".mostra-foto .specifiche").css({"animation-play-state": "running", "display": "flex"});
         $("body").css("overflow-y", "hidden");
-        var classe = $(this).attr("class");
+        let classe = $(this).attr("class");
         switch (classe) {
           case "1":
             $(".specifiche").html("<h1 style='top:100px'>Chiara Panina</h1> <h2>Work done:</h2> <ul> <li>The tiumph of Bacchus <li> The dressing room of Venus <li> Apollo and Marsia<ul>");
